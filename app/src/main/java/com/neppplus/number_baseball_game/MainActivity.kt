@@ -36,6 +36,9 @@ class MainActivity : AppCompatActivity() {
 //            이렇게 하면 오류남 스트링 값이라
             numberEdt.setText("")
 
+//            리스트뷰를 최하단 (맨 마지막 데이터)으로 내리고 싶다==>
+            messageListView.smoothScrollToPosition( mMessagelist.size - 1 )
+
         }
 
     }
