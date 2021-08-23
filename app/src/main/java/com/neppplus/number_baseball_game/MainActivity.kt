@@ -22,5 +22,21 @@ class MainActivity : AppCompatActivity() {
         mAdapter = MessageAdapter(this, R.layout.message_list_item, mMessagelist)
         messageListView.adapter = mAdapter
 
+        okBtn.setOnClickListener {
+            val inputNumStr = numberEdt.text.toString()
+//                실제로는 String값으로 뽑혀오니까 이름 Str로 짓는거
+            val msg = MessageData( inputNumStr, "USER" )
+            mMessagelist.add(msg)
+//            내용물 변겅이 있으면 습관적으로 mAdapter에 notifyDataSetChanged()하자
+            mAdapter.notifyDataSetChanged()
+
+
+//            numberEdt의 문구를 비워주고 싶다
+//            numberEdt.text = ""
+//            이렇게 하면 오류남 스트링 값이라
+            numberEdt.setText("")
+
+        }
+
     }
 }
