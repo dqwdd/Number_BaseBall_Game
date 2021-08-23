@@ -9,15 +9,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     val mMessagelist = ArrayList<MessageData>()
-
     lateinit var mAdapter : MessageAdapter
+    
+//    세자리 문제 숫자를 저장히기 위한 ArrayList
+    val mQuestionNumbers = ArrayList<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        
+//        세자리 랜덤 문제 기능 만들기
+        makeQuestionNumbers()
 
-        mMessagelist.add( MessageData("안녕하세요", "CPU") )
-        mMessagelist.add( MessageData("반갑습니다", "USER") )
 
         mAdapter = MessageAdapter(this, R.layout.message_list_item, mMessagelist)
         messageListView.adapter = mAdapter
@@ -42,4 +45,19 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    
+    fun makeQuestionNumbers() {
+//        고정된 세개 숫자를 임시 문제로 써보자
+        mQuestionNumbers.add(4)
+        mQuestionNumbers.add(7)
+        mQuestionNumbers.add(1)
+
+//        문제가 출제 되었으니 환영 메시지를 채팅창에 띄우자
+//        메시지 리스트에, 띄워줄 말들 데이터를 추가하자
+        mMessagelist.add( MessageData("어서오세요", "CPU") )
+        mMessagelist.add( MessageData("숫자야구 게임입니다", "CPU") )
+        mMessagelist.add( MessageData("세자리 숫자를 맞춰주세요", "CPU") )
+        
+    }
+    
 }

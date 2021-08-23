@@ -31,7 +31,7 @@ class MessageAdapter (
         val cpuMessageLayout = row.findViewById<LinearLayout>(R.id.cpuMessageLayout)
         val cpuMessageTxt = row.findViewById<TextView>(R.id.cpuMessageTxt)
         val userMessageLayout = row.findViewById<LinearLayout>(R.id.userMessageLayout)
-        val userMessageTxt = row.findViewById<LinearLayout>(R.id.userMessageTxt)
+        val userMessageTxt = row.findViewById<TextView>(R.id.userMessageTxt)
 
 
         if (data.writer == "CPU") {
