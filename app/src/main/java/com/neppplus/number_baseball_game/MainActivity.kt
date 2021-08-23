@@ -42,10 +42,54 @@ class MainActivity : AppCompatActivity() {
 //            리스트뷰를 최하단 (맨 마지막 데이터)으로 내리고 싶다==>
             messageListView.smoothScrollToPosition( mMessagelist.size - 1 )
 
+
+//            컴퓨터가 ?S ?B인지 판단해서 메시지 추가 (답장)
+//            기니까 밑에 따로 펑션 만들어서 가져오자
+            checkAnswer( inputNumStr.toInt() )
+//            스트링으로 했으니까 toInt로 Int로 받아오자
         }
 
     }
-    
+
+
+
+    fun checkAnswer( inputNum : Int) {
+//        사람이 입력한 숫자가 ?S ?B인지 판단하는 함수
+//        사람이 입력한 숫자를 => 각 자리별로 나눠서 => 목록에 대입
+
+        val userInputNumArr = ArrayList<Int>()
+
+        userInputNumArr.add( inputNum / 100 ) //100의 자리가 몇이냐 => 456에서 4
+        userInputNumArr.add( (inputNum / 10) % 10 ) //10의 자리가 몇이냐 456에서 5
+        userInputNumArr.add( inputNum % 10 ) //1의 자리가 몇이냐 456에서 6
+
+        var strikeCount = 0
+        var ballCount = 0
+        for ( i  in 0..2) {
+            for ( j   in 0..2) {
+//                내가 입력한 숫자 i번째랑, 컴퓨터가 낸 숫자 j번째가 같은 값인가?
+                if ( userInputNumArr[i] == mQuestionNumbers[j] ) {
+                    //같은 숫자 하나 찾았다면~
+//                    위치도 같은지 물어보자
+                    if ( i == j ) {
+                        strikeCount++
+                    }
+                    else {
+                        ballCount++
+                    }
+                }
+            }
+        } //for문 맨 바깥꺼
+
+//        ?S ?B 인지를 컴퓨터가 말하는걸 처리
+        mMessagelist.add( MessageData("${strikeCount}S ${ballCount}B 입니다", "CPU"))
+        mAdapter.notifyDataSetChanged() // 알려야 함
+
+        messageListView.smoothScrollToPosition( mMessagelist.size -1 )
+
+    } //checkAnswer
+
+
     fun makeQuestionNumbers() {
 //        고정된 세개 숫자를 임시 문제로 써보자
         mQuestionNumbers.add(4)
