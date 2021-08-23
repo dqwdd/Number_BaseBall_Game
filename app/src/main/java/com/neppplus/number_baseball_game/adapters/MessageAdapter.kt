@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.neppplus.number_baseball_game.R
 import com.neppplus.number_baseball_game.data.MessageData
@@ -26,6 +27,10 @@ class MessageAdapter (
 
         val data = mroomList[position]
 
+        val cpuMessageLayout = row.findViewById<LinearLayout>(R.id.cpuMessageLayout)
+        val cpuMessageTxt = row.findViewById<TextView>(R.id.cpuMessageTxt)
+        val userMessageLayout = row.findViewById<LinearLayout>(R.id.userMessageLayout)
+        val userMessageTxt = row.findViewById<LinearLayout>(R.id.userMessageTxt)
 
         return row
     }
