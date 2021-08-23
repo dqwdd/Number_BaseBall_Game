@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/cpuMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="left">
+
+        <TextView
+            android:id="@+id/cpuMessageTxt"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="컴퓨터가 말 한 내용"
+            android:paddingLeft="10dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/cpuMessage"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/userMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right">
+
+        <TextView
+            android:id="@+id/userMessageTxt"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="내가 말 한 내용"
+            android:paddingLeft="1dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/userMessage"/>
+
+    </LinearLayout>
+
+</LinearLayout>
