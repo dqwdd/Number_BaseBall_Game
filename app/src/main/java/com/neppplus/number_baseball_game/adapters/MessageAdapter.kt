@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.isInvisible
 import com.neppplus.number_baseball_game.R
 import com.neppplus.number_baseball_game.data.MessageData
 
@@ -31,6 +32,20 @@ class MessageAdapter (
         val cpuMessageTxt = row.findViewById<TextView>(R.id.cpuMessageTxt)
         val userMessageLayout = row.findViewById<LinearLayout>(R.id.userMessageLayout)
         val userMessageTxt = row.findViewById<LinearLayout>(R.id.userMessageTxt)
+
+
+        if (data.writer == "CPU") {
+            userMessageLayout.visibility = View.GONE
+            cpuMessageLayout.visibility = View.VISIBLE
+//            재사용성때문에 하나가 곤이면 하나 비지블로 해줘
+            cpuMessageTxt.text = data.content
+        }
+        else {
+            cpuMessageLayout.visibility = View.GONE
+            userMessageLayout.visibility = View.VISIBLE
+//            재사용성때문에 하나가 곤이면 하나 비지블로 해줘
+            userMessageTxt.text = data.content
+        }
 
         return row
     }
